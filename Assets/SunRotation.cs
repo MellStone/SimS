@@ -14,6 +14,6 @@ public class SunRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation += new Vector3(speed * Time.deltaTime, 0f, 0f);
+
     }
 }
