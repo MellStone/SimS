@@ -4347,6 +4347,7 @@ GameObject:
   - component: {fileID: 371260434}
   - component: {fileID: 371260433}
   - component: {fileID: 371260432}
+  - component: {fileID: 371260437}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -4455,6 +4456,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &371260437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371260431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f77034ae0a329345a6ad004e04e4e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waypoints: []
+  target: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &384518475
 GameObject:
   m_ObjectHideFlags: 0
@@ -16506,7 +16522,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35460
+  m_Name: pb_Mesh38860
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21299,7 +21315,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36080
+  m_Name: pb_Mesh39550
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
