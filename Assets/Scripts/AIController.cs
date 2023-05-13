@@ -1,21 +1,21 @@
 using UnityEngine;
-public class AIController : AITargetSetter
+public class AIController : MonoBehaviour
 {
     private AIParameterModifier parameterModifier;
     private AITargetSetter targetSetter;
-    public Animator animator;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        parameterModifier = new AIParameterModifier();
+        parameterModifier = GetComponent<AIParameterModifier>();
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        parameterModifier.HPDecreaser();        
+        parameterModifier.HP();        
     }
     private bool AchivedTarget()
     {

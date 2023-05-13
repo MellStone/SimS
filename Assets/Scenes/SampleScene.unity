@@ -1254,7 +1254,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24870
+  m_Name: pb_Mesh24876
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4349,6 +4349,7 @@ GameObject:
   - component: {fileID: 371260432}
   - component: {fileID: 371260438}
   - component: {fileID: 371260437}
+  - component: {fileID: 371260439}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -4469,10 +4470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f77034ae0a329345a6ad004e04e4e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypoints:
-  - {fileID: 1717302066}
-  target: {fileID: 1717302066}
-  animator: {fileID: 371260438}
 --- !u!95 &371260438
 Animator:
   serializedVersion: 5
@@ -4493,6 +4490,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &371260439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371260431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0bcae8e5c02b57499c06a93d9cf8389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _medKits: []
+  _bed: []
+  _foodStorage: []
+  _kitchen: []
+  _seats: []
+  _wc: []
+  _lightSwitcher: []
+  _workPlace: []
+  _entertainmentArea: []
+  _hP: 76.4
+  _energy: 0
+  _hunger: 0
+  _thirst: 0
+  _exhausted: 0
+  _wC: 0
+  _workDemand: 0
+  _lightDemand: 0
+  _mentalHP: 0
+  hPSpeedDecreaser: 0
 --- !u!1 &384518475
 GameObject:
   m_ObjectHideFlags: 0
@@ -4825,7 +4853,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24582
+  m_Name: pb_Mesh24588
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4989,7 +5017,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24464
+  m_Name: pb_Mesh24470
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7593,7 +7621,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24160
+  m_Name: pb_Mesh24166
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10778,7 +10806,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23958
+  m_Name: pb_Mesh23962
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13276,7 +13304,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24752
+  m_Name: pb_Mesh24758
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18810,7 +18838,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24676
+  m_Name: pb_Mesh24682
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21338,7 +21366,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24556
+  m_Name: pb_Mesh24562
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22666,7 +22694,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117951885}
-  - component: {fileID: 2117951884}
   m_Layer: 0
   m_Name: Data Manager
   m_TagString: Untagged
@@ -22674,36 +22701,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2117951884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117951883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d59e74ecf270ca4b9b675216dda6a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  medKits: []
-  bed: []
-  foodStorage: []
-  kitchen: []
-  seats: []
-  wc: []
-  lightSwitcher: []
-  workPlace: []
-  entertainmentArea: []
-  _hP: 0
-  _energy: 0
-  _hunger: 0
-  _thirst: 0
-  _exausted: 0
-  _wc: 0
-  _workDemand: 0
-  _lightDemand: 0
-  _mentalHP: 0
 --- !u!4 &2117951885
 Transform:
   m_ObjectHideFlags: 0

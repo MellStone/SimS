@@ -1,25 +1,16 @@
 using UnityEngine;
 
-public class AIParameterModifier : MonoBehaviour
+public class AIParameterModifier : DataStorage
 {
     [SerializeField] private float hPSpeedDecreaser;
-    [SerializeField] public DataStorage data;
+    DataStorage dataStorage;
 
     private void Start()
     {
-        data = GetComponent<DataStorage>();
+        dataStorage = GetComponent<DataStorage>();
     }
-
-    public void HPIncreaser()
+    public void HP()
     {
-        data._hP += 3;
-    }
-
-    public void HPDecreaser()
-    {
-        if (data._hP > 0)
-        {
-            data._hP -= hPSpeedDecreaser * Time.deltaTime;
-        }
+        ManagerHP(0.3f, false); //just test
     }
 }
