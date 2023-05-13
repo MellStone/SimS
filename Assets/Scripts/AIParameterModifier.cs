@@ -1,30 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AIParameterModifier : DataStorage
+public class AIParameterModifier : MonoBehaviour
 {
-    [SerializeField]
-    private float hPSpeedDecreaser;
-    private DataStorage dataStorage;
+    [SerializeField] private float hPSpeedDecreaser;
+    [SerializeField] public DataStorage data;
+
     private void Start()
     {
-        dataStorage = GetComponent<DataStorage>();
+        data = GetComponent<DataStorage>();
     }
+
     public void HPIncreaser()
     {
-        dataStorage._hP += 3;
+        data._hP += 3;
     }
+
     public void HPDecreaser()
     {
-        if (dataStorage._hP > 0)
+        if (data._hP > 0)
         {
-            dataStorage._hP -= hPSpeedDecreaser * Time.deltaTime;
+            data._hP -= hPSpeedDecreaser * Time.deltaTime;
         }
     }
-    public void HPManager()
-    {
-
-    }
-    
 }

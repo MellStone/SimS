@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AITargetSetter : MonoBehaviour
+public class AITargetSetter : DataStorage
 {
     protected NavMeshAgent agent;
     public GameObject[] _waypoints;
