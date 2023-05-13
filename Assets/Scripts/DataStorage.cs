@@ -12,29 +12,29 @@ public class DataStorage : MonoBehaviour
     public List<GameObject> kitchen = new List<GameObject>();
     public List<GameObject> seats = new List<GameObject>();
     public List<GameObject> wc = new List<GameObject>();
-    public List<GameObject> lightSwitcher = new List<GameObject>(); //if provide changing of day and night
+    public List<GameObject> lightSwitcher = new List<GameObject>(); //if provide changing day and night
     public List<GameObject> workPlace = new List<GameObject>(); //computers
     public List<GameObject> entertainmentArea = new List<GameObject>(); //recreation area
-
+    
     [Space]
 
     [Header("AI Parameters")]
     [Range(0f, 100f)]
-    public int _hP;
+    public float _hP;
     [Range(0f, 100f)]
     public float _energy;
     [Range(0f, 100f)]
-    public int _hunger;
+    public float _hunger;
     [Range(0f, 100f)]
-    public int _thirst;
+    public float _thirst;
     [Range(0f, 100f)]
-    public int _exausted;
+    public float _exhausted;
     [Range(0f, 100f)]
-    public int _wc;
+    public float _wc;
     [Range(0f, 100f)]
-    public int _workDemand;
+    public float _workDemand;
     [Range(0f, 100f)]
-    public int _lightDemand;
+    public float _lightDemand;
     [Range(0f, 100f)]
-    public int _mentalHP;
+    public float _mentalHP;
 }
