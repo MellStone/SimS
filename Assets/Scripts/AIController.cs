@@ -15,7 +15,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        parameterModifier.HP();        
+        parameterModifier.HP();
     }
     private bool AchivedTarget()
     {

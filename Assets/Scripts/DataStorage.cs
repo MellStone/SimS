@@ -2,64 +2,75 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DataStorage : MonoBehaviour
 {
-    public Transform p_medKits;
-    //Array of GameObjects (Transform) which we assigned in inspector
+    const float  maxValue = 100f;
+    const float minValue = 0.0f;
+
     [Header("Location List \n")]
-    [SerializeField] private Transform[] _medKits;
-    [SerializeField] private Transform[] _bed;
-    [SerializeField] private Transform[] _foodStorage;
-    [SerializeField] private Transform[] _kitchen;
-    [SerializeField] private Transform[] _seats;
-    [SerializeField] private Transform[] _wc;
-    [SerializeField] private Transform[] _lightSwitcher; //if provide changing day and night
-    [SerializeField] private Transform[] _workPlace; //computers
-    [SerializeField] private Transform[] _entertainmentArea; //recreation area
+    [SerializeField] private GameObject p_medKits;
+    [SerializeField] private GameObject p_bed;
+    [SerializeField] private GameObject p_foodStorage;
+    [SerializeField] private GameObject p_kitchen;
+    [SerializeField] private GameObject p_seats;
+    [SerializeField] private GameObject p_wc;
+    [SerializeField] private GameObject p_lightSwitcher; //if provide changing day and night
+    [SerializeField] private GameObject p_workPlace; //computers
+    [SerializeField] private GameObject p_entertainmentArea; //recreation area
+
+    //Array of GameObjects (Transform) which we assigned in inspector
+    //[SerializeField] private Transform[] _medKits;
+    //[SerializeField] private Transform[] _bed;
+    //[SerializeField] private Transform[] _foodStorage;
+    //[SerializeField] private Transform[] _kitchen;
+    //[SerializeField] private Transform[] _seats;
+    //[SerializeField] private Transform[] _wc;
+    //[SerializeField] private Transform[] _lightSwitcher; //if provide changing day and night
+    //[SerializeField] private Transform[] _workPlace; //computers
+    //[SerializeField] private Transform[] _entertainmentArea; //recreation area
 
     //List of GameObject positions
-    protected List<Vector3> medKits;
-    protected List<Vector3> bed;
-    protected List<Vector3> foodStorage;
-    protected List<Vector3> kitchen;
-    protected List<Vector3> seats;
-    protected List<Vector3> wc;
-    protected List<Vector3> lightSwitcher; //if provide changing day and night
-    protected List<Vector3> workPlace; //computers
-    protected List<Vector3> entertainmentArea; //recreation area
+    public List<Vector3> medKits;
+    public List<Vector3> bed;
+    public List<Vector3> foodStorage;
+    public List<Vector3> kitchen;
+    public List<Vector3> seats;
+    public List<Vector3> wc;
+    public List<Vector3> lightSwitcher; //if provide changing day and night
+    public List<Vector3> workPlace; //computers
+    public List<Vector3> entertainmentArea; //recreation area
 
     [Space]
 
     [Header("AI Parameters")]
     [SerializeField]
-    [Range(0f, 100f)] private float _hP;
+    [Range(minValue, maxValue)] private float _hP;
     [SerializeField]
-    [Range(0f, 100f)] private float _energy;
+    [Range(minValue, maxValue)] private float _energy;
     [SerializeField]
-    [Range(0f, 100f)] private float _hunger;
+    [Range(minValue, maxValue)] private float _hunger;
     [SerializeField]
-    [Range(0f, 100f)] private float _thirst;
+    [Range(minValue, maxValue)] private float _thirst;
     [SerializeField]
-    [Range(0f, 100f)] private float _exhausted;
+    [Range(minValue, maxValue)] private float _exhausted;
     [SerializeField]
-    [Range(0f, 100f)] private float _wC;
+    [Range(minValue, maxValue)] private float _wC;
     [SerializeField]
-    [Range(0f, 100f)] private float _workDemand;
+    [Range(minValue, maxValue)] private float _workDemand;
     [SerializeField]
-    [Range(0f, 100f)] private float _lightDemand;
+    [Range(minValue, maxValue)] private float _lightDemand;
     [SerializeField]
-    [Range(0f, 100f)] private float _mentalHP;
+    [Range(minValue, maxValue)] private float _mentalHP;
 
 
-    private void Start()
+    private void Awake()
     {
-        AddPositionsToList(_medKits, medKits, p_medKits);
-        //AddPositionsToList(_foodStorage, foodStorage);
-        //AddPositionsToList(_kitchen, kitchen);
-        //AddPositionsToList(_seats, seats);
-        //AddPositionsToList(_wc, wc);
-        //AddPositionsToList(_lightSwitcher, lightSwitcher);
-        //AddPositionsToList(_workPlace, workPlace);
-        //AddPositionsToList(_entertainmentArea, entertainmentArea);
-
+        AddPositionsToList(p_medKits, medKits);
+        AddPositionsToList(p_foodStorage, foodStorage);
+        AddPositionsToList(p_kitchen, kitchen);
+        AddPositionsToList(p_seats, seats);
+        AddPositionsToList(p_wc, wc);
+        AddPositionsToList(p_lightSwitcher, lightSwitcher);
+        AddPositionsToList(p_workPlace, workPlace);
+        AddPositionsToList(p_entertainmentArea, entertainmentArea);
     }
 
     public void ManagerHP(float p_value, bool isPlus)
@@ -99,14 +110,16 @@ public class DataStorage : MonoBehaviour
         _mentalHP += isPlus ? p_value : -p_value;
     }
 
-    private void AddPositionsToList(Transform[] _transforms, List<Vector3> list, Transform parent)
+    private void AddPositionsToList(GameObject parent, List<Vector3> list)
     {
-        _transforms = parent.GetComponentsInChildren<Transform>();
-        list = new List<Vector3>();
-        foreach (Transform transform in _transforms)
+        if (parent != null)
         {
-            list.Add(transform.position);
+            var child = parent.GetComponentsInChildren<Transform>();
+            foreach (Transform _transform in child)
+            {
+                list.Add(_transform.position);
+            }
         }
+        else return;
     }
-
 }

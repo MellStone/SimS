@@ -11,6 +11,6 @@ public class AIParameterModifier : DataStorage
     }
     public void HP()
     {
-        ManagerHP(0.3f, false); //just test
+        this.ManagerHP(hPSpeedDecreaser, false); //just test
     }
 }
