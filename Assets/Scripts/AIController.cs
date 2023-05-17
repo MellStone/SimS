@@ -4,18 +4,22 @@ public class AIController : MonoBehaviour
     private AIParameterModifier parameterModifier;
     private AITargetSetter targetSetter;
     private Animator animator;
-
-    // Start is called before the first frame update
     void Start()
     {
         parameterModifier = GetComponent<AIParameterModifier>();
         animator = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        parameterModifier.HP();
+        parameterModifier.ManagerHP();
+        parameterModifier.ManagerThirst();
+        parameterModifier.ManagerHunger();
+        parameterModifier.ManagerEnergy();
+        parameterModifier.ManagerExhausted();
+        parameterModifier.ManagerWC();
+        parameterModifier.ManagerWorkDemand();
+        parameterModifier.ManagerMentalHP();
+        parameterModifier.MangerLightDemand();
     }
     private bool AchivedTarget()
     {

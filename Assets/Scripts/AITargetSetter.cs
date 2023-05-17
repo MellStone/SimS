@@ -3,14 +3,13 @@ using UnityEngine.AI;
 
 public class AITargetSetter : MonoBehaviour
 {
-    public DataStorage data; // why is assigned from AIParameterModifier
+    public DataStorage data;
     protected NavMeshAgent agent;
-    public GameObject[] _waypoints;
     public GameObject target;
+
     // Start is called before the first frame update
     private void Start()
     {
-        data = GetComponent<DataStorage>();
         foreach (var i in this.data.seats)
         {
             Debug.Log(i);
