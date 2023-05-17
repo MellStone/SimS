@@ -10,7 +10,7 @@ public class AIParameterModifier : DataStorage
         dataStorage = GetComponent<DataStorage>();
     }
     public void HP()
-    {
+    {   
         this.ManagerHP(hPSpeedDecreaser, false); //just test
     }
 }

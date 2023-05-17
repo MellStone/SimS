@@ -2,19 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DataStorage : MonoBehaviour
 {
-    const float  maxValue = 100f;
-    const float minValue = 0.0f;
+    protected const float  MAXVALUE = 100f;
+    protected const float MINVALUE = 0.0f;
 
     [Header("Location List \n")]
-    [SerializeField] private GameObject p_medKits;
-    [SerializeField] private GameObject p_bed;
-    [SerializeField] private GameObject p_foodStorage;
-    [SerializeField] private GameObject p_kitchen;
-    [SerializeField] private GameObject p_seats;
-    [SerializeField] private GameObject p_wc;
-    [SerializeField] private GameObject p_lightSwitcher; //if provide changing day and night
-    [SerializeField] private GameObject p_workPlace; //computers
-    [SerializeField] private GameObject p_entertainmentArea; //recreation area
+    [SerializeField] private GameObject m_medKits;
+    [SerializeField] private GameObject m_bed;
+    [SerializeField] private GameObject m_foodStorage;
+    [SerializeField] private GameObject m_kitchen;
+    [SerializeField] private GameObject m_seats;
+    [SerializeField] private GameObject m_wc;
+    [SerializeField] private GameObject m_lightSwitcher; //if provide changing day and night
+    [SerializeField] private GameObject m_workPlace; //computers
+    [SerializeField] private GameObject m_entertainmentArea; //recreation area
 
     //Array of GameObjects (Transform) which we assigned in inspector
     //[SerializeField] private Transform[] _medKits;
@@ -42,35 +42,35 @@ public class DataStorage : MonoBehaviour
 
     [Header("AI Parameters")]
     [SerializeField]
-    [Range(minValue, maxValue)] private float _hP;
+    [Range(MINVALUE, MAXVALUE)] private float _hP;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _energy;
+    [Range(MINVALUE, MAXVALUE)] private float _energy;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _hunger;
+    [Range(MINVALUE, MAXVALUE)] private float _hunger;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _thirst;
+    [Range(MINVALUE, MAXVALUE)] private float _thirst;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _exhausted;
+    [Range(MINVALUE, MAXVALUE)] private float _exhausted;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _wC;
+    [Range(MINVALUE, MAXVALUE)] private float _wC;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _workDemand;
+    [Range(MINVALUE, MAXVALUE)] private float _workDemand;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _lightDemand;
+    [Range(MINVALUE, MAXVALUE)] private float _lightDemand;
     [SerializeField]
-    [Range(minValue, maxValue)] private float _mentalHP;
+    [Range(MINVALUE, MAXVALUE)] private float _mentalHP;
 
 
     private void Awake()
     {
-        AddPositionsToList(p_medKits, medKits);
-        AddPositionsToList(p_foodStorage, foodStorage);
-        AddPositionsToList(p_kitchen, kitchen);
-        AddPositionsToList(p_seats, seats);
-        AddPositionsToList(p_wc, wc);
-        AddPositionsToList(p_lightSwitcher, lightSwitcher);
-        AddPositionsToList(p_workPlace, workPlace);
-        AddPositionsToList(p_entertainmentArea, entertainmentArea);
+        AddPositionsToList(m_medKits, medKits);
+        AddPositionsToList(m_foodStorage, foodStorage);
+        AddPositionsToList(m_kitchen, kitchen);
+        AddPositionsToList(m_seats, seats);
+        AddPositionsToList(m_wc, wc);
+        AddPositionsToList(m_lightSwitcher, lightSwitcher);
+        AddPositionsToList(m_workPlace, workPlace);
+        AddPositionsToList(m_entertainmentArea, entertainmentArea);
     }
 
     public void ManagerHP(float p_value, bool isPlus)

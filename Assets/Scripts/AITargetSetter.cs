@@ -1,19 +1,19 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AITargetSetter : DataStorage
+public class AITargetSetter : MonoBehaviour
 {
-    public DataStorage dataStorage;
+    public DataStorage data; // why is assigned from AIParameterModifier
     protected NavMeshAgent agent;
     public GameObject[] _waypoints;
     public GameObject target;
     // Start is called before the first frame update
     private void Start()
     {
-        dataStorage = GetComponent<DataStorage>();
-        foreach (Vector3 i in seats)
+        data = GetComponent<DataStorage>();
+        foreach (var i in this.data.seats)
         {
-            
+            Debug.Log(i);
         }
     }
     public void SetTarget()
