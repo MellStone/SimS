@@ -1,27 +1,39 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class AITargetSetter : MonoBehaviour
 {
-    public DataStorage data;
-    protected NavMeshAgent agent;
+    [SerializeField] private PriorityController priority;
+    [SerializeField] private DataStorage data;
+    [SerializeField] private NavMeshAgent agent;
     public GameObject target;
 
-    // Start is called before the first frame update
     private void Start()
     {
-        foreach (var i in this.data.seats)
-        {
-            Debug.Log(i);
-        }
+        
+    }
+    private void Update()
+    {
+        
     }
     public void SetTarget()
     {
-
         agent.SetDestination(target.transform.position);
         if (Vector3.Distance(transform.position, target.transform.position) < 1f)
         {
             //target.transform.position = 
         }
+    }
+    private int PriorityCheck()
+    {
+        switch (priority.priority)
+        {
+            case 0:
+
+                break;
+        }
+        int k =1;
+        return k;
     }
 }

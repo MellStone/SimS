@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DataStorage : MonoBehaviour
 {
+    //For "Range" field
     protected const float MAXVALUE = 100f;
     protected const float MINVALUE = 0.0f;
 
-    [Header("Location List \n")]
+    [Header("Location List (Parent Object) \n")]
+    //List of Parent GameObjects which have interactive GameObjects what we needs
     [SerializeField] private GameObject m_medKits;
     [SerializeField] private GameObject m_bed;
     [SerializeField] private GameObject m_foodStorage;
@@ -50,6 +52,8 @@ public class DataStorage : MonoBehaviour
     [SerializeField]
     [Range(MINVALUE, MAXVALUE)] private float _lightDemand;
 
+    public List<float> Parameters;
+
     public float HP { get => _hP; set => _hP = value; }
     public float Energy { get => _energy; set => _energy = value; }
     public float Hunger { get => _hunger; set => _hunger = value; }
@@ -71,7 +75,24 @@ public class DataStorage : MonoBehaviour
         AddPositionsToList(m_lightSwitcher, lightSwitcher);
         AddPositionsToList(m_workPlace, workPlace);
         AddPositionsToList(m_entertainmentArea, entertainmentArea);
+
+        AddParametersToList();
     }
+
+    private void AddParametersToList()
+    {
+        Parameters.Add(LightDemand);
+        Parameters.Add(MentalHP);
+        Parameters.Add(Energy);
+        Parameters.Add(Exhausted);
+        Parameters.Add(WorkDemand);
+        Parameters.Add(WC);
+        Parameters.Add(Thirst);
+        Parameters.Add(Hunger);
+        Parameters.Add(HP);
+    }
+
+    //Adding from parent - GameObject in new list(previously initialization);
     private void AddPositionsToList(GameObject parent, List<Vector3> list)
     {
         if (parent != null)
@@ -84,4 +105,30 @@ public class DataStorage : MonoBehaviour
         }
         else return;
     }
+    public void UpdateParameters()
+    {
+        //higher value - higher priority
+        Parameters[0] = LightDemand;
+        Parameters[1] = MentalHP;
+        Parameters[2] = Energy;
+        Parameters[3] = Exhausted;
+        Parameters[4] = WorkDemand;
+        Parameters[5] = WC;
+        Parameters[6] = Thirst;
+        Parameters[7] = Hunger;
+        Parameters[8] = HP;
+    }
 }
+
+public readonly struct AddressLabel
+{
+    public readonly Vector3 position;
+    public readonly int type;
+
+    public AddressLabel(Vector3 position, int type)
+    {
+        this.position = position;
+        this.type = type;
+    }
+}
+

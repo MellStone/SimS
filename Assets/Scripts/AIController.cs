@@ -11,6 +11,11 @@ public class AIController : MonoBehaviour
     }
     void Update()
     {
+        UpdateParameters();
+    }
+
+    private void UpdateParameters()
+    {
         parameterModifier.ManagerHP();
         parameterModifier.ManagerThirst();
         parameterModifier.ManagerHunger();
@@ -21,6 +26,7 @@ public class AIController : MonoBehaviour
         parameterModifier.ManagerMentalHP();
         parameterModifier.MangerLightDemand();
     }
+
     private bool AchivedTarget()
     {
         if (Vector3.Distance(transform.position, targetSetter.target.transform.position) <= 1f)
