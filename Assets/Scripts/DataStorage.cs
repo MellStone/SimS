@@ -33,6 +33,7 @@ public class DataStorage : MonoBehaviour
     [Space]
 
     [Header("AI Parameters")]
+    //Parametrs Value
     [SerializeField]
     [Range(MINVALUE, MAXVALUE)] private float _hP;
     [SerializeField]
@@ -52,8 +53,10 @@ public class DataStorage : MonoBehaviour
     [SerializeField]
     [Range(MINVALUE, MAXVALUE)] private float _lightDemand;
 
+    //Creating list of parametrs for Priority Controller Script
     public List<float> Parameters;
 
+    //Incapsulating
     public float HP { get => _hP; set => _hP = value; }
     public float Energy { get => _energy; set => _energy = value; }
     public float Hunger { get => _hunger; set => _hunger = value; }
@@ -64,7 +67,7 @@ public class DataStorage : MonoBehaviour
     public float MentalHP { get => _mentalHP; set => _mentalHP = value; }
     public float LightDemand { get => _lightDemand; set => _lightDemand = value; }
 
-
+   
     private void Awake()
     {
         AddPositionsToList(m_medKits, medKits);
@@ -75,7 +78,7 @@ public class DataStorage : MonoBehaviour
         AddPositionsToList(m_lightSwitcher, lightSwitcher);
         AddPositionsToList(m_workPlace, workPlace);
         AddPositionsToList(m_entertainmentArea, entertainmentArea);
-
+        
         AddParametersToList();
     }
 
@@ -122,13 +125,26 @@ public class DataStorage : MonoBehaviour
 
 public readonly struct AddressLabel
 {
-    public readonly Vector3 position;
+    public readonly Vector3[] position;
     public readonly int type;
 
-    public AddressLabel(Vector3 position, int type)
+    public AddressLabel(Vector3[] position, int type)
     {
         this.position = position;
         this.type = type;
     }
+}
+
+public enum ParameterType
+{
+    LightDemand,
+    MentalHP,
+    Energy,
+    Exhausted,
+    WorkDemand,
+    WC,
+    Thirst,
+    Hunger,
+    HP
 }
 

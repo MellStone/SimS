@@ -4357,6 +4357,7 @@ MonoBehaviour:
   data: {fileID: 2117951886}
   agent: {fileID: 371260432}
   target: {fileID: 0}
+  playerPositon: {x: 0, y: 0, z: 0}
 --- !u!114 &371260441
 MonoBehaviour:
   m_ObjectHideFlags: 0
