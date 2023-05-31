@@ -13,50 +13,52 @@ public class AIParameterModifier : MonoBehaviour
     public float ManagerEnergy()
     {
         if (Energy >= 0.1f)
-            Energy -= Time.deltaTime;
-        //Energy -= (Hunger + Thirst) * 0.0005f;
+            Energy -= (Hunger + Thirst) / 200 * 0.05f;
+        
         return Energy;
     }
     public float ManagerHunger()
     {
-        if(Hunger >= 0.1f)
-            Hunger -= Time.deltaTime;
+        if (Hunger >= 0.1f)
+            Hunger -= Time.deltaTime * 0.8f;
+        if (Hunger < 0)
+            Hunger = 0;
         return Hunger;
     }
     public float ManagerThirst()
     {
         if (Thirst >= 0.1f)
-            Thirst -= Time.deltaTime * 2;
+            Thirst -= Time.deltaTime;
+        if (Thirst < 0)
+            Thirst = 0;
         return Thirst;
     }
     public float ManagerExhausted()
     {
         if (Exhausted >= 0.1f)
             Exhausted -= (100 - Energy) * 0.01f;
+        if (Exhausted < 0)
+            Exhausted = 0;
         return Exhausted;
     }
     public float ManagerWC()
     {
         if (WC >= 0.1f)
-        {
-
-        }
+            WC -= Time.deltaTime;
         return WC;
     }
     public float ManagerWorkDemand()
     {
         if (WorkDemand >= 0.1f)
-        {
-
-        }
+            WorkDemand -= Time.deltaTime * 0.4f;
+        if (WorkDemand < 0)
+            WorkDemand = 0;
         return WorkDemand;
     }
     public float ManagerMentalHP()
     {
         if (MentalHP >= 0.1f)
-        {
-
-        }
+            MentalHP -= (WorkDemand * Energy * HP) * 0.00000001f;
         return MentalHP;
     }
     public float MangerLightDemand()

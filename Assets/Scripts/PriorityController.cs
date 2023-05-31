@@ -22,8 +22,12 @@ public class PriorityController : MonoBehaviour
                     priority = i;
                 }
             }
-            Debug.Log("Now priority is: " + priority);
+            //Debug.Log("Now priority is: " + priority);
             yield return new WaitForSeconds(5f);
         } while (true);
+    }
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

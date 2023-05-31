@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class AITargetSetter : MonoBehaviour
 {
@@ -8,48 +11,68 @@ public class AITargetSetter : MonoBehaviour
     [SerializeField] private DataStorage data;
     [SerializeField] private NavMeshAgent agent;
     public GameObject target;
-    [SerializeField] private Vector3 playerPositon;
+    [SerializeField] private GameObject ai;
+    [SerializeField] private Vector3 aiPosition;
 
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
-        
+        SetTarget();
     }
+
     public void SetTarget()
     {
-        agent.SetDestination(target.transform.position);
+        agent.SetDestination(ShortestTarget(ChoosePriority()));
+
         if (Vector3.Distance(transform.position, target.transform.position) < 1f)
         {
-            //target.transform.position = 
+            target.transform.position = ShortestTarget(data.wc);
         }
     }
-    private int PriorityCheck()
+
+    private Vector3 ShortestTarget(List<Vector3> vectors)
+    {
+        if (vectors == null || vectors.Count == 0)
+            return Vector3.zero;
+
+        aiPosition = ai.transform.position;
+
+        Vector3 shortestVector = vectors[0];
+        float shortestDistance = Vector3.Distance(shortestVector, aiPosition);
+
+        for (int i = 1; i < vectors.Count; i++)
+        {
+            float distance = Vector3.Distance(vectors[i], aiPosition);
+            if (distance < shortestDistance)
+            {
+                shortestVector = vectors[i];
+                shortestDistance = distance;
+            }
+        }
+        return shortestVector;
+    }
+    List<Vector3> ChoosePriority()
     {
         switch (priority.priority)
         {
-            case (int)ParameterType.HP:
-
-                break;
+            case 0:
+                return data.lightSwitcher;
+            case 1:
+                return data.entertainmentArea;
+            case 2:
+                return data.bed;
+            case 3:
+                return data.entertainmentArea;
+            case 4:
+                return data.workPlace;
+            case 5:
+                return data.wc;
+            case 6:
+                return data.kitchen;
+            case 7:
+                return data.kitchen;
+            case 8:
+                return data.medKits;
+            default: return null;
         }
-        int k =1;
-        return k;
-    }
-    private Vector3 ShortestWay(Vector3[] m_postions)
-    {
-        List<float> shorts = new List<float>();
-        Vector3 shortestTarget = Vector3.one;
-        foreach (Vector3 target in m_postions)
-        {
-            shorts.Add(Vector3.Distance(target, playerPositon));
-        }
-        foreach(float targerts in shorts)
-        {
-            if (targerts < 0)
-            { }
-        }
-        return shortestTarget;
     }
 }

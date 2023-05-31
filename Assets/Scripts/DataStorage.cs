@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 public class DataStorage : MonoBehaviour
 {
     //For "Range" field
@@ -53,7 +54,7 @@ public class DataStorage : MonoBehaviour
     [SerializeField]
     [Range(MINVALUE, MAXVALUE)] private float _lightDemand;
 
-    //Creating list of parametrs for Priority Controller Script
+    //Creating list of parameters for Priority Controller Script
     public List<float> Parameters;
 
     //Incapsulating
@@ -67,7 +68,7 @@ public class DataStorage : MonoBehaviour
     public float MentalHP { get => _mentalHP; set => _mentalHP = value; }
     public float LightDemand { get => _lightDemand; set => _lightDemand = value; }
 
-   
+
     private void Awake()
     {
         AddPositionsToList(m_medKits, medKits);
@@ -78,7 +79,7 @@ public class DataStorage : MonoBehaviour
         AddPositionsToList(m_lightSwitcher, lightSwitcher);
         AddPositionsToList(m_workPlace, workPlace);
         AddPositionsToList(m_entertainmentArea, entertainmentArea);
-        
+
         AddParametersToList();
     }
 
@@ -122,6 +123,7 @@ public class DataStorage : MonoBehaviour
         Parameters[8] = HP;
     }
 }
+
 
 public readonly struct AddressLabel
 {
