@@ -1,16 +1,20 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+
 public class AIController : MonoBehaviour
 {
-    private AIParameterModifier parameterModifier;
-    private AITargetSetter targetSetter;
-    private Animator animator;
+    [SerializeField]private AIParameterModifier parameterModifier;
+    [SerializeField] private AITargetSetter targetSetter;
+    [SerializeField]private Animator animator;
     void Start()
     {
+        targetSetter = GetComponent<AITargetSetter>();
         parameterModifier = GetComponent<AIParameterModifier>();
         animator = GetComponent<Animator>();
     }
     void Update()
     {
+        Animation();
         UpdateParameters();
     }
 
@@ -27,17 +31,12 @@ public class AIController : MonoBehaviour
         parameterModifier.MangerLightDemand();
     }
 
-    private bool AchivedTarget()
+    private void Animation()
     {
-        if (Vector3.Distance(transform.position, targetSetter.target.transform.position) <= 1f)
+        if (Vector3.Distance(transform.position, targetSetter.target) >= 1f)
         {
-            animator.SetBool("isRunning", false);
-            return true;
+            animator.SetBool("isRunning", true);    
         }
-        else
-        {
-            animator.SetBool("isRunning", true);
-            return false;
-        }
+        else animator.SetBool("isRunning", false);
     }
 }

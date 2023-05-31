@@ -10,9 +10,10 @@ public class AITargetSetter : MonoBehaviour
     [SerializeField] private PriorityController priority;
     [SerializeField] private DataStorage data;
     [SerializeField] private NavMeshAgent agent;
-    public GameObject target;
+    public Vector3 target;
     [SerializeField] private GameObject ai;
     [SerializeField] private Vector3 aiPosition;
+    
 
     private void Update()
     {
@@ -23,10 +24,6 @@ public class AITargetSetter : MonoBehaviour
     {
         agent.SetDestination(ShortestTarget(ChoosePriority()));
 
-        if (Vector3.Distance(transform.position, target.transform.position) < 1f)
-        {
-            target.transform.position = ShortestTarget(data.wc);
-        }
     }
 
     private Vector3 ShortestTarget(List<Vector3> vectors)
@@ -46,6 +43,7 @@ public class AITargetSetter : MonoBehaviour
             {
                 shortestVector = vectors[i];
                 shortestDistance = distance;
+                target = shortestVector;
             }
         }
         return shortestVector;

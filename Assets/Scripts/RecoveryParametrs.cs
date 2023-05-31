@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RecoveryParametrs : MonoBehaviour
 {
-    DataStorage data;
+    [SerializeField] DataStorage data;
     [SerializeField] bool isHP;
     [SerializeField] bool isEntertainment;
     [SerializeField] bool isKitchen;
@@ -13,21 +13,11 @@ public class RecoveryParametrs : MonoBehaviour
     [SerializeField] bool isBed;
     [SerializeField] bool isWorkPlace;
 
-    [SerializeField] float regenSpeed = 50;
-
-    private void Start()
+    private void OnTriggerEnter(Collider other)
     {
-
+        Debug.Log("wokrl");
     }
-    private void OnColliderEnter(Collider collider)
-    {
-        if (collider != null)
-        {
-            IsParametrs();
-            Debug.Log("Work");
-        }   
-    }
-    private void IsParametrs()
+    private void IsParameters()
     {
         if (isHP)
         {
@@ -36,25 +26,25 @@ public class RecoveryParametrs : MonoBehaviour
         }
         if (isEntertainment)
         {
-            data.MentalHP += Time.deltaTime * regenSpeed;
-            data.Exhausted += Time.deltaTime * regenSpeed;
+            data.MentalHP = 100;
+            data.Exhausted = 100;
         }
         if (isKitchen)
         {
-            data.Hunger += Time.deltaTime * regenSpeed;
-            data.Thirst += Time.deltaTime * regenSpeed;
+            data.Hunger = 100;
+            data.Thirst = 100;
         }
         if (isWorkPlace)
         {
-            data.WorkDemand += Time.deltaTime * regenSpeed;
+            data.WorkDemand = 100;
         }
         if (isWC) 
         {
-            data.WC += Time.deltaTime * regenSpeed;
+            data.WC = 100;
         }
         if (isBed)
         {
-            data.Energy += Time.deltaTime * regenSpeed;
+            data.Energy = 100;
         }
     }
 }
